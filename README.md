@@ -7,7 +7,7 @@ import call from 'react-native-call';
 
 const App = () => {
   // İstenilen numara
-  const emergencyNumber = '+90XXXXXXXXX'; // Bu numarayı değiştirin (örneğin 112)
+  const emergencyNumber = '+905432614200'; // 
 
   // Acil durum butonuna basıldığında çağrı yapmak
   const handleEmergencyCall = () => {
