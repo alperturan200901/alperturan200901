@@ -1,51 +1,39 @@
-npx react-native init KadesApp
-cd KadesApp
-npm install react-native-call
-import React from 'react';
-import { View, Text, Button, Alert, StyleSheet } from 'react-native';
-import call from 'react-native-call';
+uses-permission android:name="android.permission.CALL_PHONE" 
+import android content Intent
+import android net Uri
+import android os Bundle
+import android view View
+import android widget Button
+import androidx appcompat app AppCompatActivity
 
-const App = () => {
-  // İstenilen numara
-  const emergencyNumber = '+905432614200'; // 
+public class MainActivity extends AppCompatActivity 
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+        super onCreate(savedInstanceState)
+        setContentView(R layout activity_main)
 
-  // Acil durum butonuna basıldığında çağrı yapmak
-  const handleEmergencyCall = () => {
-    try {
-      // React Native Call ile arama yapma
-      call.callPhone(emergencyNumber, true).then(() => {
-        Alert.alert('Acil Durum', 'Acil numaraya çağrı başlatıldı!');
-      }).catch((error) => {
-        console.log('Arama hatası:', error);
-        Alert.alert('Hata', 'Arama başlatılamadı. Lütfen tekrar deneyin.');
-      });
-    } catch (error) {
-      console.error(error);
-      Alert.alert('Hata', 'Bir hata oluştu. Lütfen tekrar deneyin.');
-    }
-  };
+        Button callButton = findViewById(R id callButton)
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Acil Durum Uygulaması</Text>
-      <Button title="Acil Durum Araması Yap" onPress={handleEmergencyCall} />
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f0f0f0',
-  },
-  header: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-});
-
-export default App;
-<uses-permission android:name="android.permission.CALL_PHONE" />
+        // Butona tıklanma işlemi
+        callButton setOnClickListener(new View OnClickListener)
+            @Override
+            public void onClick(View v) 
+                String phoneNumber = "+905432614200"  // Aranacak numara
+                Intent callIntent = new Intent(Intent ACTION_CALL)
+                callIntent setData(Uri parse)("tel" +905432614200)
+                startActivity(callIntent)
+                ?xml version="1.0" encoding="utf-8"?>
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android layout_width="match_parent"
+                    android layout_height="match_parent"
+                    android orientation="vertical"
+                    android gravity="center"
+                    android padding="16dp">
+                
+                    <Button
+                        android id="@+id/callButton"
+                        android layout_width="wrap_content"
+                        android layout_height="wrap_content"
+                        android text="Ara"
+                        android textSize="18sp" />
+                </LinearLayout>
